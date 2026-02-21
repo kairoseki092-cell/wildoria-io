@@ -1,0 +1,25 @@
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let x = 200;
+let y = 200;
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "w") y -= 10;
+  if (e.key === "s") y += 10;
+  if (e.key === "a") x -= 10;
+  if (e.key === "d") x += 10;
+});
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "green";
+  ctx.fillRect(x, y, 50, 50);
+  requestAnimationFrame(draw);
+}
+
+
+draw();
