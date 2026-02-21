@@ -1,3 +1,4 @@
+/* ===== FUNDO TEXTURIZADO ===== */
 body {
   margin: 0;
   overflow: hidden;
@@ -6,11 +7,8 @@ body {
   background-color: #4c7a4c;
 
   background-image:
-    /* textura suave tipo grama */
     radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
     radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
-
-    /* grid estilo .io */
     linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px);
 
@@ -27,4 +25,70 @@ body {
     0 0;
 
   box-shadow: inset 0 0 200px rgba(0,0,0,0.25);
+}
+
+
+/* ===== MENU CENTRALIZADO ===== */
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: white;
+}
+
+
+/* ===== TÍTULO ===== */
+h1 {
+  font-size: 70px;
+  margin-bottom: 40px;
+}
+
+
+/* ===== CORES ===== */
+.colors {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.color {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid white;
+  transition: 0.2s;
+}
+
+.color:hover {
+  transform: scale(1.2);
+}
+
+.selected {
+  box-shadow: 0 0 15px white;
+}
+
+
+/* ===== BOTÃO PLAY ===== */
+button {
+  padding: 15px 50px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
 }
