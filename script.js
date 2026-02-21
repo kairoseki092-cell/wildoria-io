@@ -63,7 +63,7 @@ function startGame() {
     ctx.save();
     ctx.translate(-cameraX, -cameraY);
 
-    // Fundo base
+    // Fundo
     ctx.fillStyle = "#4c7a4c";
     ctx.fillRect(0, 0, worldWidth, worldHeight);
 
@@ -96,6 +96,25 @@ function startGame() {
     );
 
     ctx.restore();
+
+    // Bordas escuras fora do mapa
+    ctx.fillStyle = "rgba(0,0,0,0.4)";
+
+    if (cameraX < 0) {
+      ctx.fillRect(0, 0, -cameraX, canvas.height);
+    }
+
+    if (cameraY < 0) {
+      ctx.fillRect(0, 0, canvas.width, -cameraY);
+    }
+
+    if (cameraX + canvas.width > worldWidth) {
+      ctx.fillRect(worldWidth - cameraX, 0, canvas.width, canvas.height);
+    }
+
+    if (cameraY + canvas.height > worldHeight) {
+      ctx.fillRect(0, worldHeight - cameraY, canvas.width, canvas.height);
+    }
   }
 
   function gameLoop() {
