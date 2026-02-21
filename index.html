@@ -2,15 +2,27 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>🌿 Wildoria.io</title>
+  <title>Wildoria.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <canvas id="game"></canvas>
+<div id="menu">
+  <h1>Wildoria.io</h1>
 
-  <script src="script.js"></script>
+  <div class="colors">
+    <div class="color" style="background:#4CAF50" data-color="#4CAF50"></div>
+    <div class="color" style="background:#2196F3" data-color="#2196F3"></div>
+    <div class="color" style="background:#FF5722" data-color="#FF5722"></div>
+    <div class="color" style="background:#9C27B0" data-color="#9C27B0"></div>
+  </div>
 
+  <button id="playBtn">Play</button>
+</div>
+
+<canvas id="game" style="display:none;"></canvas>
+
+<script src="script.js"></script>
 </body>
 </html>
