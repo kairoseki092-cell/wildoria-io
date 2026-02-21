@@ -3,16 +3,28 @@ body {
   overflow: hidden;
   font-family: Arial, sans-serif;
 
-  /* Cor base */
-  background-color: #3d6b3d;
+  background-color: #4c7a4c;
 
-  /* Textura de grid */
   background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    /* textura suave tipo grama */
+    radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+
+    /* grid estilo .io */
+    linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px);
 
-  background-size: 40px 40px;
+  background-size:
+    6px 6px,
+    8px 8px,
+    40px 40px,
+    40px 40px;
 
-  /* Leve escurecimento nas bordas */
-  box-shadow: inset 0 0 150px rgba(0,0,0,0.3);
+  background-position:
+    0 0,
+    3px 3px,
+    0 0,
+    0 0;
+
+  box-shadow: inset 0 0 200px rgba(0,0,0,0.25);
 }
