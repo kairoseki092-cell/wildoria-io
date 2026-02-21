@@ -23,22 +23,66 @@ function startGame() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  let x = canvas.width / 2;
-  let y = canvas.height / 2;
+  // Mundo grande
+  const worldWidth = 3000;
+  const worldHeight = 3000;
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "w") y -= 10;
-    if (e.key === "s") y += 10;
-    if (e.key === "a") x -= 10;
-    if (e.key === "d") x += 10;
-  });
+  // Jogador posição no mundo
+  let player = {
+    x: worldWidth / 2,
+    y: worldHeight / 2,
+    size: 40,
+    speed: 5
+  };
+
+  let keys = {};
+
+  document.addEventListener("keydown", e => keys[e.key] = true);
+  document.addEventListener("keyup", e => keys[e.key] = false);
+
+  function update() {
+    if (keys["w"]) player.y -= player.speed;
+    if (keys["s"]) player.y += player.speed;
+    if (keys["a"]) player.x -= player.speed;
+    if (keys["d"]) player.x += player.speed;
+
+    // Limites do mapa
+    player.x = Math.max(0, Math.min(worldWidth, player.x));
+    player.y = Math.max(0, Math.min(worldHeight, player.y));
+  }
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Câmera centraliza no jogador
+    const cameraX = player.x - canvas.width / 2;
+    const cameraY = player.y - canvas.height / 2;
+
+    ctx.save();
+    ctx.translate(-cameraX, -cameraY);
+
+    // ===== Desenhar mapa =====
+    ctx.fillStyle = "#4c7a4c";
+    ctx.fillRect(0, 0, worldWidth, worldHeight);
+
+    // ===== Desenhar jogador =====
     ctx.fillStyle = playerColor;
-    ctx.fillRect(x, y, 50, 50);
-    requestAnimationFrame(draw);
+    ctx.fillRect(
+      player.x - player.size / 2,
+      player.y - player.size / 2,
+      player.size,
+      player.size
+    );
+
+    ctx.restore();
+
+    requestAnimationFrame(gameLoop);
   }
 
-  draw();
+  function gameLoop() {
+    update();
+    draw();
+  }
+
+  gameLoop();
 }
